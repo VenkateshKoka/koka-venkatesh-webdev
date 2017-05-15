@@ -3,8 +3,8 @@ I'm Venkatesh koka, pursuing Graduate studies in Computer Science at Northeaster
 
 This repository is created for purpose of Web Development Summer-I(2017) course.
 
-[Home Page] (https://koka-venkatesh-webdev.herokuapp.com/)
+[Home Page](https://koka-venkatesh-webdev.herokuapp.com/)
 
-[Project] (https://koka-venkatesh-webdev.herokuapp.com/project/index.html)
+[Project](https://koka-venkatesh-webdev.herokuapp.com/project/index.html)
 
-[Assignment] (https://koka-venkatesh-webdev.herokuapp.com/assignment/index.html)
+[Assignment](https://koka-venkatesh-webdev.herokuapp.com/assignment/index.html)
