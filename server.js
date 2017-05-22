@@ -1,4 +1,4 @@
-var express = require('express');
+/*var express = require('express');
 var app = express();
 
 var bodyParser = require('body-parser');
@@ -12,4 +12,17 @@ require ("./test/app.js")(app);
 
 var port = process.env.PORT || 3000;
 
-app.listen(port);
+app.listen(port);*/
+
+
+
+var express = require('express');
+var app = express();
+// --------- this is called routing
+/*app.get('/hello',function (req, res) {
+    console.log();
+    res.send({message:"hello from server"});
+})*/
+
+app.use(express.static(__dirname + '/public/'));
+app.listen(3000);
