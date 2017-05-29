@@ -6,9 +6,9 @@
     <title>Title</title>
     <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
 
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <div class="navbar-text pull-left fix-header-left">
-                <a href="website-list.html" class="navbar-link">
+                <a href="website-list.view.client.html" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -27,7 +27,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="website-list.html" class="navbar-link">
+                <a href="website-list.view.client.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -47,89 +47,42 @@
 
 
 
-                <li class="list-group-item">
+                <li class="list-group-item" ng-repeat="website in model.websites">
 
                     <div class="row">
                         <div class=" col-xs-10">
-                            <a href="page-list.html">Address Book App</a>
+                            <a href="../../page/templates/page-list.view.client.html">{{website.name}}</a>
                         </div>
 
                         <div class=" col-xs-2">
-                            <a href="website-edit.html">
+                            <a ng-href="#!/user/{{model.userId}}/website/{{website._id}}">
                                 <span class="glyphicon glyphicon-cog pull-right"></span>
                             </a>
                         </div>
                     </div>
                 </li>
-
-
-                <li class="list-group-item">
-
-                    <div class="row">
-                        <div class=" col-xs-10">
-                            <a href="page-list.html">Blogger</a>
-                        </div>
-
-                        <div class="col-xs-2">
-                            <a href="website-edit.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="list-group-item">
-
-                    <div class="row">
-                        <div class="col-xs-10">
-                            <a href="page-list.html">Blogging App</a>
-                        </div>
-
-                        <div class="col-xs-2">
-                            <a href="website-edit.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="list-group-item">
-
-                    <div class="row">
-                        <div class="col-xs-10">
-                            <a href="page-list.html">Script Testing App</a>
-                        </div>
-
-                        <div class="col-xs-2">
-                            <a href="website-edit.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
-
-
-
-
-
-
             </ul>
 
         </div>
+
 
         <div class="col-xs-12 col-sm-8">
 
             <label for="name">Name</label>
             <input class="form-control"
+                   ng-model="website.name"
                    placeholder="barcelona"
                    value="Blogger"
                    id="name"/>
             <label for="description">Description</label>
             <textarea id="description"
+                      ng-model="website.description"
                       placeholder="Mes que un club"
                       class="form-control">Lorem ipsum dolor sit amet, te nam tation apeirian voluptatum, error habemus convenire et mea, agam volumus consequat eu quo. Ne vis placerat adversarium. Sea reformidans instructior id. An vidisse nostrum laboramus pri, ad suas temporibus persequeris eum. Nam audire electram et</textarea>
-
+            <a ng-click="model.createWebsite(website)"
+               class="btn btn-block btn-success">
+                Create
+            </a>
         </div>
 
     </div>
@@ -139,7 +92,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-right">
-                <a href="profile.html" class="navbar-link">
+                <a href="../../user/templates/profile.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-user">
                     </span>
                 </a>

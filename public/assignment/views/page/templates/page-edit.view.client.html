@@ -1,0 +1,84 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class=" navbar-text pull-left fix-header-left">
+                <a ng-href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link pull-left">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </div>
+            <div class="col-xs-8 col-sm-8 text-center">
+                <a class="navbar-brand" href="#">
+                    Edit Page
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a ng-click="model.edit()" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4 hidden-xs">
+
+            <ul class="list-group">
+
+                <li class="list-group-item" ng-repeat="page in model.pages">
+
+                    <div class="row">
+                        <div class=" col-xs-10">
+                            <a ng-href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                                {{page.name}}
+                            </a>
+                        </div>
+
+                        <div class=" col-xs-2">
+                            <a ng-href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                                <span class="glyphicon glyphicon-cog pull-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-sm-8">
+
+            <label for="name">Name</label>
+            <input class="form-control"
+                   ng-model="model.page.name"
+                   placeholder="barcelona"
+                   value="Blogger"
+                   id="name"/>
+            <label for="title">Title</label>
+            <input id="title"
+                   ng-model="model.page.description"
+                  placeholder="Page title"
+                  class="form-control">
+            <a class="btn btn-block btn-danger"
+               ng-click="model.deletePage()">Delete</a>
+        </div>
+
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-right">
+                <a ng-href="#!/user/{{model.userId}}" class="navbar-link">
+                    <span class="glyphicon glyphicon-user">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+

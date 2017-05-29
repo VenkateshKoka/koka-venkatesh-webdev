@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+
+    <link href="../../../css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -13,39 +14,55 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <div class="navbar-text pull-left fix-header-left">
-                <a href="widget-list.html" class="navbar-link">
+                <a href="widget-list.view.client.html" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
             </div>
             <div class="col-xs-6 col-sm-6 text-center">
                 <a class="navbar-brand" href="#">
-                    Choose widget
+                    Widget Edit
                 </a>
             </div>
-
+            <div class="navbar-text pull-right">
+                <a ng-click="model.editYouTube()" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </div>
         </div>
     </div>
 </nav>
 
 
 <div class="container-fluid">
-    <ul class="list-group">
-        <li class="list-group-item"><a href="widget-heading.html">Header</a> </li>
-        <li class="list-group-item"><a href="widget-heading.html">Label</a> </li>
-        <li class="list-group-item"><a href="widget-heading.html">HTML</a> </li>
-        <li class="list-group-item"><a href="widget-heading.html">Text Input</a> </li>
-        <li class="list-group-item"><a href="widget-image.html">Image</a> </li>
-        <li class="list-group-item"><a href="widget-youtube.html">Youtube</a> </li>
 
-    </ul>
+    <label for="name">Name</label>
+    <input class="form-control"
+           id="name"/>
+
+    <label for="text">Text</label>
+    <input class="form-control"
+           id="text"/>
+
+    <label for="url">URL</label>
+    <input class="form-control"
+           value="https://youtu.be/azcdDRrhqj8"
+           id="url"/>
+
+    <label for="width">Width</label>
+    <input class="form-control"
+           id="width"/>
+
+    <a href="widget-list.view.client.html" class="btn btn-block btn-danger">Delete</a>
+
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-header">
-            <p class="navbar-text pull-right fixed-top-header-arrow">
-                <a href="profile.html" class="navbar-link">
+            <p class="navbar-text pull-right">
+                <a href="../../user/templates/profile.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-user">
                     </span>
                 </a>
@@ -53,5 +70,6 @@
         </div>
     </div>
 </nav>
+
 </body>
 </html>

@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
-    <link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <div class="navbar-text pull-left fix-header-left">
-                <a href="widget-list.html" class="navbar-link">
+                <a href="widget-list.view.client.html" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -25,7 +14,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="widget-list.html" class="navbar-link">
+                <a ng-click="model.editHeading()" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -39,27 +28,31 @@
 
     <label for="name">Name</label>
     <input class="form-control"
+           ng-model="model.name"
            placeholder="facebook"
            value="top heading"
            id="name"/>
 
     <label for="text">Text</label>
     <input class="form-control"
+           ng-model="model.text"
            placeholder="facebook"
            value="US Senate Reaches Compromise"
            id="text"/>
 
     <label for="size">Size</label>
-    <select id="size" class="form-control">
-        <option>1 (X-Large)</option>
-        <option>2 (Larger)</option>
-        <option>3 (Large)</option>
-        <option>4 (Medium)</option>
-        <option>5 (Small)</option>
-        <option>6 (Smallest)</option>
+    <select id="size"
+            ng-model="model.size"
+            class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
     </select>
 
-    <a href="widget-list.html" class="btn btn-block btn-danger">Delete</a>
+    <a href="widget-list.view.client.html" class="btn btn-block btn-danger">Delete</a>
 
 </div>
 
@@ -67,7 +60,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-right">
-                <a href="profile.html" class="navbar-link">
+                <a href="../../user/templates/profile.view.client.html" class="navbar-link">
                     <span class="glyphicon glyphicon-user">
                     </span>
                 </a>
@@ -77,5 +70,3 @@
 </nav>
 
 
-</body>
-</html>
