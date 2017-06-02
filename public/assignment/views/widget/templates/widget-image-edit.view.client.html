@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <div class="navbar-text pull-left fix-header-left">
-                <a href="widget-list.view.client.html" class="navbar-link">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -44,7 +44,7 @@
     <a href=""
        class="btn btn-block btn-primary">Upload</a>
 
-    <a href="widget-list.view.client.html"
+    <a ng-click="model.deleteWidget()"
        class="btn btn-block btn-danger">Delete</a>
 
 </div>
@@ -53,7 +53,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-right">
-                <a href="../../user/templates/profile.view.client.html" class="navbar-link">
+                <a href="#!/user/{{model.userId}}" class="navbar-link">
                     <span class="glyphicon glyphicon-user">
                     </span>
                 </a>
