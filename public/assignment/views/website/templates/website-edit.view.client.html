@@ -14,7 +14,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="website-list.view.client.html" class="navbar-link">
+                <a ng-click="model.updateWebsite(model.websiteId,model.website)" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -69,13 +69,13 @@
              <input class="form-control"
                     ng-model="model.website.name"
                     placeholder="barcelona"
-                    value="Blogger"
+
                     id="name"/>
              <label for="description">Description</label>
              <textarea id="description"
                        ng-model="model.website.description"
                        placeholder="Mes que un club"
-                       class="form-control">Lorem ipsum dolor sit amet, te nam tation apeirian voluptatum, error habemus convenire et mea, agam volumus consequat eu quo. Ne vis placerat adversarium. Sea reformidans instructior id. An vidisse nostrum laboramus pri, ad suas temporibus persequeris eum. Nam audire electram et</textarea>
+                       class="form-control"></textarea>
              <a ng-click="model.deleteWebsite(model.websiteId)"
                 class="btn btn-block btn-danger">
                  Delete

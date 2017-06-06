@@ -16,12 +16,11 @@ app.listen(port);*/
 
 
 
-var express = require('express');
-var app = express();
-
+var app = require('./express');
 var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(bodyParser.json()); //for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application
 
 // --------- this is called routing
 /*app.get('/hello',function (req, res) {
@@ -29,7 +28,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
     res.send({message:"hello from server"});
 })*/
 
-app.use(express.static(__dirname + '/public/'));
+app.use(app.express.static(__dirname + '/public/'));
+
+require("./assignment/app");
 
 require ("./test/app.js")(app);
 

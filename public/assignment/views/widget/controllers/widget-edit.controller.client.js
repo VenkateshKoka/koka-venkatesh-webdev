@@ -13,12 +13,22 @@
         model.pageId=$routeParams['pageId'];
         model.widgetId=$routeParams['widgetId'];
 
-        model.widget=widgetService.findWidgetById(model.widgetId);
-        model.name=model.widget.widgetType;
-        model.size=model.widget.size;
-        model.url=model.widget.url;
-        model.width=model.widget.width;
-        model.text=model.widget.text;
+        // model.widget=widgetService.findWidgetById(model.widgetId);
+
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then(renderWidget);
+
+            function renderWidget(widget) {
+                model.widget = widget;
+                model.name=model.widget.widgetType;
+                model.size=model.widget.size;
+                model.url=model.widget.url;
+                model.width=model.widget.width;
+                model.text=model.widget.text;
+            }
+
+
 
         model.editHeading=editHeading;
         model.deleteWidget=deleteWidget;
@@ -27,19 +37,23 @@
 
         function editHeading() {
             var wd={
-                _id:mode.widget._id,
+                _id:model.widget._id,
                 widgetType:model.name,
                 text:model.text,
                 size:model.size,
                 pageId:model.widget.pageId
             };
-            widgetService.updateWidget(model.widgetId,wd);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService.updateWidget(model.widgetId,wd).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            })
+
         }
 
         function deleteWidget() {
-            widgetService.deleteWidget(model.widgetId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService.deleteWidget(model.widgetId).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            })
+
         }
 
         function editImage() {
@@ -50,8 +64,10 @@
                 width:model.width,
                 pageId:model.widget.pageId
             };
-            widgetService.updateWidget(model.widgetId,wd);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService.updateWidget(model.widgetId,wd).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            })
+
         }
 
         function editYouTube() {
@@ -62,8 +78,10 @@
                 width:model.width,
                 pageId:model.widget.pageId
             };
-            widgetService.updateWidget(model.widgetId,wd);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService.updateWidget(model.widgetId,wd).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            })
+
         }
     }
 })();

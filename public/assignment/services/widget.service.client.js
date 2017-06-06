@@ -6,12 +6,13 @@
         .module('WAM')
         .service('widgetService', widgetService);
 
-    function widgetService() {
-        this.findWidgetsByPageId = findWidgetsByPageId;
+    function widgetService($http) {
+        this.findWidgetsByPageId = findAllWidgetsForPage;
         this.findWidgetById = findWidgetById;
         this.deleteWidget = deleteWidget;
         this.updateWidget=updateWidget;
         this.createWidget = createWidget;
+        this.sortingWidget = sortingWidget;
 
         var widgets = [
             { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -26,44 +27,79 @@
         ];
 
         function createWidget(pageId, widget) {
-            widget._id=(new Date().getTime())+"";
-            widget.pageId=pageId;
-            widgets.push(widget);
-            return widget;
+            var url = "/api/assignment/page/"+pageId+"/widget";
+            return $http.post(url,widget)
+                .then(function (response) {
+                    return response.data;
+            })
+            // widget._id=(new Date().getTime())+"";
+            // widget.pageId=pageId;
+            // widgets.push(widget);
+            // return widget;
         }
 
-        function findWidgetsByPageId(pageId) {
-            var wd=[];
-            for(var w in widgets)
-            {
-                if(widgets[w].pageId===pageId)
-                {
-                    wd.push(widgets[w]);
-                }
-            }
-            return wd;
+        function findAllWidgetsForPage(pageId) {
+            var url = "/api/assignment/page/"+pageId+"/widget";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+            })
+
+            // var wd=[];
+            // for(var w in widgets)
+            // {
+            //     if(widgets[w].pageId===pageId)
+            //     {
+            //         wd.push(widgets[w]);
+            //     }
+            // }
+            // return wd;
         }
 
         function findWidgetById(widgetId) {
-            for(var w in widgets)
-            {
-                if(widgets[w]._id===widgetId)
-                {
-                    return widgets[w];
-                }
-            }
+            var url = "/api/assignment/widget/"+widgetId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+            })
+
+            // for(var w in widgets)
+            // {
+            //     if(widgets[w]._id===widgetId)
+            //     {
+            //         return widgets[w];
+            //     }
+            // }
         }
 
         function updateWidget(widgetId, widget) {
-            var wd=findWidgetById(widgetId);
-            var ind=widgets.indexOf(wd);
-            widgets[ind]=widget;
+            var url = "/api/assignment/widget/"+widgetId;
+            return $http.put(url,widget)
+                .then(function (response) {
+                    return response.data;
+            })
+
+            // var wd=findWidgetById(widgetId);
+            // var ind=widgets.indexOf(wd);
+            // widgets[ind]=widget;
         }
 
         function deleteWidget(widgetId) {
-            var wd=findWidgetById(widgetId);
-            var ind=widgets.indexOf(wd);
-            widgets.splice(ind,1);
+            var url = "/api/assignment/widget/"+widgetId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+            })
+            // var wd=findWidgetById(widgetId);
+            // var ind=widgets.indexOf(wd);
+            // widgets.splice(ind,1);
+        }
+        function sortingWidget(startIndex,stopIndex,pageId) {
+            var url = "/api/assignment/page/"+pageId+"/widget?initial="+startIndex+"&final="+stopIndex;
+            return $http.put(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
 })();

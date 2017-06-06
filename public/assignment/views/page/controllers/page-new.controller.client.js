@@ -13,22 +13,26 @@
         var model = this;
         model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
-        model.pages = pageService.findPageByWebsiteId(model.websiteId);
-
         model.create = create;
+        // model.pages = pageService.findPageByWebsiteId(model.websiteId);
+        function init() {
+            pageService
+                .findAllPagesForWebsite(model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                });
+        }
+        init();
 
-        function create(name,description) {
-            if(name===''||name===null||typeof name==='undefined')
-            {
-                model.message='Page name is required';
-                return;
-            }
-            var p={
-                name:name,
-                description:description
-            };
-            pageService.createPage(model.websiteId,p);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+
+
+        function create(page) {
+            pageService
+                .createPage(model.websiteId,page)
+                .then(function () {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+            })
+
         }
     }
 })();

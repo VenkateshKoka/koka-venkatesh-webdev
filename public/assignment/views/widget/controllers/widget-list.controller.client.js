@@ -13,7 +13,11 @@
         model.pageId=$routeParams['pageId'];
         model.widgetId=$routeParams['widgetId'];
 
-        model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+        // model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+
+        widgetService.findWidgetsByPageId(model.pageId).then(function (widgets) {
+            model.widgets = widgets;
+        });
 
         model.trust = trust;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;

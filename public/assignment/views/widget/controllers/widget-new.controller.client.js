@@ -23,8 +23,10 @@
                 size:0,
                 text:""
             };
-            wd=widgetService.createWidget(model.pageId,heading);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+            widgetService.createWidget(model.pageId,heading).then(function (wd) {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+            })
+
         }
 
         function createhtml() {
@@ -32,8 +34,10 @@
                 widgetType:"HTML",
                 text:""
             };
-            wd=widgetService.createWidget(model.pageId,html);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+            widgetService.createWidget(model.pageId,html).then(function (wd) {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+
+            })
         }
 
         function createImage() {
@@ -42,8 +46,10 @@
                 width:"100%",
                 url:""
             };
-            wd=widgetService.createWidget(model.pageId,image);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+            widgetService.createWidget(model.pageId,image).then(function (wd) {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+
+            })
         }
 
         function createYouTube() {
@@ -52,8 +58,10 @@
                 width:"100%",
                 url:""
             };
-            wd=widgetService.createWidget(model.pageId,youtube);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+            widgetService.createWidget(model.pageId,youtube).then(function (wd) {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+
+            })
         }
     }
 })();
