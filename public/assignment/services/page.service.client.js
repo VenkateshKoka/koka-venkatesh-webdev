@@ -11,11 +11,11 @@
         this.deletePage = deletePage;
 
 
-        var pages = [
-            { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-            { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-            { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
-        ];
+        // var pages = [
+        //     { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
+        //     { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
+        //     { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
+        // ];
 
 
         function createPage(websiteId, page) {
@@ -31,9 +31,9 @@
             // pages.push(page);
         }
 
-        function deletePage(pageId) {
+        function deletePage(websiteId,pageId) {
 
-            var url = "/api/assignment/page/"+pageId;
+            var url = "/api/assignment/website/"+websiteId+"/page/"+pageId;
             return $http.delete(url,pageId).then(function (response) {
                 return response.data;
             })

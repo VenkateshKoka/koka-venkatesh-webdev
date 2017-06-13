@@ -34,9 +34,9 @@
         }
         init();
 
-        function deleteWebsite(websiteId) {
-            console.log("delete Website");
-            var userId = model.userId;
+        function deleteWebsite(userId,websiteId) {
+            //console.log("delete Website");
+            //var userId = model.userId;
             websiteService
                 .deleteWebsite(websiteId,userId)
                 .then(function () {

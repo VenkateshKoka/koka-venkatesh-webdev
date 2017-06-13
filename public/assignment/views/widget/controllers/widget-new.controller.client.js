@@ -16,14 +16,31 @@
         model.createhtml=createhtml;
         model.createImage=createImage;
         model.createYouTube=createYouTube;
+        model.createtext = createtext;
 
+        function createtext() {
+            console.log("create text");
+            var textW={
+                type:"TEXT",
+                rows:0,
+                formatted:false,
+                placeholder:"",
+                text:""
+            };
+            widgetService.createWidget(model.pageId,textW).then(function (textWid) {
+                console.log(textWid._id);
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+textWid._id);
+            })
+        }
         function createHeading() {
+            console.log("sdscdsc");
             var heading={
-                widgetType:"HEADING",
+                type:"HEADING",
                 size:0,
                 text:""
             };
             widgetService.createWidget(model.pageId,heading).then(function (wd) {
+                console.log(wd._id);
                 $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
             })
 
@@ -31,7 +48,7 @@
 
         function createhtml() {
             var html={
-                widgetType:"HTML",
+                type:"HTML",
                 text:""
             };
             widgetService.createWidget(model.pageId,html).then(function (wd) {
@@ -42,7 +59,7 @@
 
         function createImage() {
             var image={
-                widgetType:"IMAGE",
+                type:"IMAGE",
                 width:"100%",
                 url:""
             };
@@ -54,7 +71,7 @@
 
         function createYouTube() {
             var youtube={
-                widgetType:"YOUTUBE",
+                type:"YOUTUBE",
                 width:"100%",
                 url:""
             };

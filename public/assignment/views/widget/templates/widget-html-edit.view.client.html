@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -9,32 +8,35 @@
                 </a>
             </div>
             <div class="col-xs-6 col-sm-6 text-center">
-                <a class="navbar-brand">
-                    Choose widget
+                <a class="navbar-brand" href="#">
+                    Widget Edit
                 </a>
             </div>
-
+            <div class="navbar-text pull-right">
+                <a ng-click="model.editText()" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </div>
         </div>
     </div>
 </nav>
 
-
 <div class="container-fluid">
-    <ul class="list-group">
-        <li class="list-group-item"><a ng-click="model.createHeading()">Header</a> </li>
-        <li class="list-group-item"><a ng-click="model.createHeading()">Label</a> </li>
-        <li class="list-group-item"><a ng-click="model.createhtml()">HTML</a> </li>
-        <li class="list-group-item"><a ng-click="model.createtext()">Text Input</a> </li>
-        <li class="list-group-item"><a ng-click="model.createImage()">Image</a> </li>
-        <li class="list-group-item"><a ng-click="model.createYouTube()">Youtube</a> </li>
+<div ng-model="model.text"
+     text-angular
+     ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]"></div>
+    <a ng-click="model.deleteWidget()"
+       class="btn btn-block btn-danger">Delete</a>
 
-    </ul>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-header">
-            <p class="navbar-text pull-right fixed-top-header-arrow">
+            <p class="navbar-text pull-right">
                 <a href="#!/user/{{model.userId}}" class="navbar-link">
                     <span class="glyphicon glyphicon-user">
                     </span>
