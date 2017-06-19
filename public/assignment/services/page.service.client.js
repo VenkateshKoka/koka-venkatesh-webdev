@@ -34,8 +34,10 @@
         function deletePage(websiteId,pageId) {
 
             var url = "/api/assignment/website/"+websiteId+"/page/"+pageId;
-            return $http.delete(url,pageId).then(function (response) {
-                return response.data;
+            return $http.
+                    delete(url,pageId)
+                    .then(function (response) {
+                        return response.data;
             })
             // var page = findPageById(pageId);
             // var index = pages.indexOf(page);
@@ -45,8 +47,9 @@
         function findPageById(pageId) {
 
             var url = "/api/assignment/page/"+pageId;
-            return $http.get(url).then(function (response) {
-                return response.data;
+            return $http.get(url)
+                .then(function (response) {
+                        return response.data;
             })
 
             // return pages.find(function (page) {
@@ -57,8 +60,9 @@
         function findAllPagesForWebsite(websiteId) {
 
             var url = "/api/assignment/website/"+websiteId+"/page";
-            return $http.get(url).then(function (response) {
-                return response.data;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
             })
 
             // var results = [];
@@ -74,8 +78,9 @@
         
         function updatePage(pageId, page) {
             var url = "/api/assignment/page/"+pageId;
-            return $http.put(url,page).then(function (response) {
-                return response.data;
+            return $http.put(url,page)
+                .then(function (response) {
+                    return response.data;
 
             });
             // var oldPage = findPageById(pageId);

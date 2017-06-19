@@ -6,10 +6,11 @@
         .module('WAM')
         .controller('newWidgetController',newWidgetController);
 
-    function newWidgetController($routeParams, $location, widgetService) {
+    function newWidgetController($routeParams, $location,currentUser, widgetService) {
         var model=this;
+        model.userId = currentUser._id;
         model.websiteId=$routeParams['userId'];
-        model.userId=$routeParams['userId'];
+       // model.userId=$routeParams['userId'];
         model.pageId=$routeParams['pageId'];
 
         model.createHeading=createHeading;
@@ -29,7 +30,7 @@
             };
             widgetService.createWidget(model.pageId,textW).then(function (textWid) {
                 console.log(textWid._id);
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+textWid._id);
+                $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+textWid._id);
             })
         }
         function createHeading() {
@@ -41,7 +42,7 @@
             };
             widgetService.createWidget(model.pageId,heading).then(function (wd) {
                 console.log(wd._id);
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+                $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
             })
 
         }
@@ -52,7 +53,7 @@
                 text:""
             };
             widgetService.createWidget(model.pageId,html).then(function (wd) {
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+                $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
 
             })
         }
@@ -64,7 +65,7 @@
                 url:""
             };
             widgetService.createWidget(model.pageId,image).then(function (wd) {
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+                $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
 
             })
         }
@@ -76,7 +77,7 @@
                 url:""
             };
             widgetService.createWidget(model.pageId,youtube).then(function (wd) {
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
+                $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+wd._id);
 
             })
         }

@@ -7,11 +7,12 @@
         .controller('websiteEditController', websiteEditController);
 
     function websiteEditController($routeParams,
-                                   $location,
+                                   $location,currentUser,
                                    websiteService) {
         var model = this;
 
-        model.userId = $routeParams['userId'];
+       // model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
         model.websiteId = $routeParams.websiteId;
         model.deleteWebsite = deleteWebsite;
         model.updateWebsite = updateWebsite;
@@ -41,17 +42,17 @@
                 .deleteWebsite(websiteId,userId)
                 .then(function () {
 
-                $location.url('/user/'+model.userId+'/website');
+                $location.url('/website');
             })
 
         }
         function updateWebsite(websiteId,website) {
-            console.log("came to controller");
-            console.log(websiteId+website);
+            // console.log("came to controller");
+            // console.log(websiteId+website);
             websiteService
                 .updateWebsite(websiteId,website)
                 .then(function () {
-                $location.url('/user/'+model.userId+'/website');
+                $location.url('/website');
             })
 
         }

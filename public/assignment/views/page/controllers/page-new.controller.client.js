@@ -7,11 +7,13 @@
         .controller('newPageController', newPageController);
 
     function newPageController($routeParams,
-                                  $location,
+                                  $location,currentUser,
                                   pageService)
     {
         var model = this;
-        model.userId = $routeParams['userId'];
+        // model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
+
         model.websiteId = $routeParams['websiteId'];
         model.create = create;
         // model.pages = pageService.findPageByWebsiteId(model.websiteId);
@@ -30,7 +32,7 @@
             pageService
                 .createPage(model.websiteId,page)
                 .then(function () {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                    $location.url('/website/'+model.websiteId+'/page');
             })
 
         }

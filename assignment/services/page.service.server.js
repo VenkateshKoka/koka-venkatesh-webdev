@@ -46,7 +46,7 @@ function deletePage(req,res) {
     pageModel
         .deletePage(websiteId,pageId)
         .then(function (status) {
-        res.send(status);
+            res.send(status);
     })
     // for (var p in pages){
     //     if(pages[p]._id === pageId){

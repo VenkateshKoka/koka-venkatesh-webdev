@@ -7,7 +7,9 @@
     <script src="../vendor/textAngular/js/textAngular-rangy.min.js"></script>
     <script src="../vendor/textAngular/js/textAngular-sanitize.min.js"></script>
     <script src="../vendor/textAngular/js/textAngular.min.js"></script>
+
     <link href="../vendor/textAngular/css/textAngular.css" rel="stylesheet" type="text/css"/>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -36,7 +38,13 @@
 
     <script src="app.js"></script>
     <script src="../directives/wbdv-sortable.js"></script>
+    <script src="./views/home/main.controller.client.js"></script>
+
     <!--<script src="config.js"></script>-->
+
+    <!-- admin-->
+    <script src="views/admin/controllers/admin-users.controller.client.js"></script>
+
     <!-- user -->
     <script src="views/user/controllers/login.controller.view.js"></script>
     <script src="views/user/controllers/profile.controller.view.js"></script>
@@ -70,9 +78,9 @@
 
 <body>
 
-<div ng-view></div>
-
-<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+<div ng-view=""></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>-->
 <script src="../vendor/jquery/jquery-ui.js"></script>
 </body>
 

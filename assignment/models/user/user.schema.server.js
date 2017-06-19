@@ -6,6 +6,11 @@ var userSchema = mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
+    google: {
+        id:String,
+        token:String
+    },
+    roles : [{type:String, default:'USER', enum :['USER','ADMIN']}],
     email: String,
     websites: [{type: mongoose.Schema.Types.ObjectId, ref: "GraduateWebsiteModel"}],
     dateCreated: {type: Date, default: Date.now}

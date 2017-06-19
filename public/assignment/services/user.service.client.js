@@ -16,13 +16,70 @@
 
         var api = {
             createUser: createUser,
+            register : register,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
+            findAllUsers : findAllUsers,
+            login : login,
+            checkAdmin : checkAdmin,
+            logout : logout,
+            loggedin : loggedin,
             updateUser: updateUser,
-            deleteUser:deleteUser
+            deleteUser:deleteUser,
+            unregister : unregister
         };
         return api;
+
+        function logout() {
+            var url = "/api/assignment/logout";
+            return $http.post(url)
+                    .then(function (status) {
+                        return status;
+                });
+        }
+
+        function login(username,password) {
+            var url = "/api/assignment/login";
+            var credentials = {
+                username :username,
+                password : password
+            }
+            return $http.post(url,credentials)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function loggedin() {
+            var url = "/api/assignment/loggedin";
+            return $http.get(url)
+                        .then(function (response) {
+                             return response.data;
+                        })
+        }
+
+        function checkAdmin() {
+            var url = "/api/assignment/checkAdmin";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
+
+        function register(userObj) {
+            var url = "/api/assignment/register";
+            return $http.post(url,userObj).then(function (response) {
+                return response.data;
+            })
+        }
+        function unregister(userObj) {
+            var url = "/api/assignment/unregister";
+            return $http.post(url,userObj).then(function (response) {
+                return response.data;
+            })
+        }
+
 
         function deleteUser(userId) {
             var url = "/api/assignment/user/"+userId;
@@ -34,9 +91,10 @@
 
         function updateUser(userId, user) {
             var url = "/api/assignment/user/"+userId;
-            return $http.put(url,user).then(function (response) {
-                var user = response.data;
-                return user;
+            return $http
+                .put(url,user)
+                .then(function (response) {
+                return response.data;
             });
         }
 
@@ -57,8 +115,7 @@
 
             var url = "/api/assignment/user?username="+username;
             return $http.get(url).then(function (response) {
-                var user = response.data;
-                return user;
+                return response.data;
             });
             // var user = users.find(function (user) {
             //     return user.username === username;
@@ -99,6 +156,15 @@
             //     }
             // }
             // return null;
+        }
+
+        function findAllUsers() {
+            var url = "/api/assignment/user";
+            return $http
+                .get(url)
+                .then(function (response) {
+                    return response.data;
+            })
         }
 
     }

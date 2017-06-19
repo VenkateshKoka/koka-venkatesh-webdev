@@ -3,6 +3,8 @@
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
+
+        <!--{{model.currentUser._id}}-->
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -14,14 +16,22 @@
             <a class="navbar-brand topnav" href="#">Webdev Assignment</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <!--{{mainController.currentUser}}-->
+                <li ng-show="!model.currentUser._id">
                     <a href="#!/login">Login</a>
                 </li>
-                <li>
+                <li >
+                    <a ng-if="model.currentUser.roles.indexOf('ADMIN')>-1" href="#!/admin">Admin</a>
+                </li>
+                <li ng-show="!model.currentUser._id">
                     <a href="#!/register">Register</a>
                 </li>
+                <li ng-show="model.currentUser._id">
+                    <a href="#!/profile">Profile</a>
+                </li>
+
                 <li>
                     <a href="#!/#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Home</a>
                 </li>
@@ -31,7 +41,7 @@
     </div>
     <!-- /.container -->
 </nav>
-
+</div>
 
 <!-- Header -->
 <a name="about"></a>
@@ -62,14 +72,12 @@
     </div>
     <!-- /.container -->
 
-</div>
 <!-- /.intro-header -->
-
-
+<
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<!--<script src="../../js/jquery.js"></script>-->
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<!--&lt;!&ndash; Bootstrap Core JavaScript &ndash;&gt;-->
+<!--<script src="../../js/bootstrap.min.js"></script>-->
 
 

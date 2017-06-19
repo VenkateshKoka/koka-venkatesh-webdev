@@ -6,9 +6,10 @@
         .module('WAM')
         .controller('widgetEditController',widgetEditController);
 
-    function widgetEditController($routeParams, $location, widgetService) {
+    function widgetEditController($routeParams, $location,currentUser, widgetService) {
         var model=this;
-        model.userId=$routeParams['userId'];
+        //model.userId=$routeParams['userId'];
+        model.userId = currentUser._id;
         model.websiteId=$routeParams['websiteId'];
         model.pageId=$routeParams['pageId'];
         model.widgetId=$routeParams['widgetId'];
@@ -49,7 +50,7 @@
                 placeholder:model.placeholder
             }
             widgetService.updateWidget(model.widgetId,editT).then(function () {
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
             })
         }
 
@@ -62,14 +63,14 @@
                 pageId:model.widget.pageId
             };
             widgetService.updateWidget(model.widgetId,wd).then(function () {
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
             })
 
         }
 
         function deleteWidget() {
             widgetService.deleteWidget(model.pageId,model.widgetId).then(function () {
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                $location.url(+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
             })
 
         }
@@ -83,7 +84,7 @@
                 pageId:model.widget.pageId
             };
             widgetService.updateWidget(model.widgetId,wd).then(function () {
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
             })
 
         }
@@ -97,7 +98,7 @@
                 pageId:model.widget.pageId
             };
             widgetService.updateWidget(model.widgetId,wd).then(function () {
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
             })
 
         }

@@ -6,12 +6,14 @@
         .module('WAM')
         .controller('pageEditController', pageEditController);
 
-    function pageEditController($routeParams,
+    function pageEditController($routeParams,currentUser,
                                    $location,
                                    pageService) {
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        // model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
+
         model.pageId = $routeParams['pageId'];
         model.websiteId = $routeParams.websiteId;
 
@@ -21,11 +23,15 @@
 
         function init() {
 
-            pageService.findAllPagesForWebsite(model.websiteId).then(function (pages) {
-                model.pages = pages;
+            pageService
+                .findAllPagesForWebsite(model.websiteId)
+                .then(function (pages) {
+                        model.pages = pages;
             });
-            pageService.findPageById(model.pageId).then(function (page) {
-                model.page = page;
+            pageService
+                .findPageById(model.pageId)
+                .then(function (page) {
+                        model.page = page;
             });
         }
         init();
@@ -35,7 +41,7 @@
 
         function deletePage(websiteId,pageId) {
             pageService.deletePage(websiteId,pageId).then(function () {
-                $location.url('/user/'+model.userId+'/website/'+websiteId+'/page');
+                $location.url('/website/'+websiteId+'/page');
             })
 
         }
@@ -48,7 +54,7 @@
             //     websiteId:model.page.websiteId
             // };
             pageService.updatePage(pageId,newPage).then(function () {
-                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                $location.url('/website/'+model.websiteId+'/page');
             })
 
         }

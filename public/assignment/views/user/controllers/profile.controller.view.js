@@ -6,31 +6,57 @@
         .module('WAM')
         .controller('profileController', profileController);
 
-    function profileController($location, $routeParams, userService) {
+    function profileController($location, $routeParams,currentUser, userService) {
 
         var model = this;
 
-        model.userId = $routeParams['userId'];
-
+       // model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
+        model.unregister = unregister;
+        model.logout = logout;
         
 
+        function init() {
+            renderUser(currentUser);
+        }
+        init();
 
          // model.user = userService.findUserById(model.userId);
-        userService
-            .findUserById(model.userId)
-            .then(renderUser, userError);
+        // userService
+        //     .findUserById(model.userId)
+        //     .then(renderUser, userError);
+
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+            })
+        }
         
         function updateUser(user) {
-            userService.updateUser(user._id, user).then(function () {
-                model.message = "User update successful";
+            userService
+                .updateUser(user._id, user)
+                .then(function () {
+                    model.message = "User update successful";
             });
         }
 
-        function deleteUser(user) {
+        function unregister() {
             userService
-                .deleteUser(user._id)
+                .unregister()
+                .then(function () {
+                    $location.url('/');
+                }, function () {
+                    model.error = "Unable to unregister you";
+                });
+        }
+
+        function deleteUser() {
+            userService
+                .deleteUser()
                 .then(function () {
                     $location.url('/');
                 }, function () {

@@ -12,7 +12,7 @@
         function login(username, password) {
             // var found = userService.findUserByCredentials(username, password);
             userService
-                .findUserByCredentials(username, password)
+                .login(username, password) // changed from findUserByCredentials to login
                 .then(loginuser,loginError);
 
             function loginuser(user) {
@@ -20,7 +20,7 @@
                     model.message = "sorry,  not found. please try again!";
 
                 } else {
-                    $location.url('/user/' + user._id);
+                    $location.url('/profile');
 
                     // $location.url('/login');
 
