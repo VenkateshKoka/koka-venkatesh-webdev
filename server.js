@@ -28,7 +28,7 @@ app.use(bodyParser.json()); //for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application
 
 app.use(cookieParser()); // for parsing cookies
-app.use(session({ secret:  process.env.SESSION_SECRET }));
+app.use(session({ secret: 'koka' })); //process.env.SESSION_SECRET
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -48,7 +48,7 @@ var brewdb = new BreweryDb('8515bd4cd542f2ee041606f0bdaaa7b9&styleId=15');
 app.use(app.express.static(__dirname + '/public/'));
 
 require("./assignment/app");
-
+// require("./public/project/app");
 
 require ("./test/app.js")(app);
 

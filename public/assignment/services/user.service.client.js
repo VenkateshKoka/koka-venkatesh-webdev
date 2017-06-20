@@ -69,14 +69,18 @@
 
         function register(userObj) {
             var url = "/api/assignment/register";
-            return $http.post(url,userObj).then(function (response) {
-                return response.data;
+            return $http
+                .post(url,userObj)
+                .then(function (response) {
+                        return response.data;
             })
         }
         function unregister(userObj) {
             var url = "/api/assignment/unregister";
-            return $http.post(url,userObj).then(function (response) {
-                return response.data;
+            return $http
+                .post(url,userObj)
+                .then(function (response) {
+                        return response.data;
             })
         }
 
@@ -114,8 +118,9 @@
         function findUserByUsername(username) {
 
             var url = "/api/assignment/user?username="+username;
-            return $http.get(url).then(function (response) {
-                return response.data;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
             });
             // var user = users.find(function (user) {
             //     return user.username === username;
@@ -130,9 +135,10 @@
         function findUserById(userId) {
 
             var url = "/api/assignment/user/"+userId;
-            return  $http.get(url).then(function (response) {
-                var user = response.data;
-                return user;
+            return  $http.get(url)
+                .then(function (response) {
+                    var user = response.data;
+                    return user;
             })
             // for(var u in users) {
             //     if(users[u]._id === userId)
